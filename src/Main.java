@@ -37,6 +37,8 @@ public class Main {
             employee.applySalaryIncrease();
         }
 
+        System.out.println();
+
         Map<String, List<Employee>> employeesByFunction = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getFunction));
 
@@ -63,6 +65,7 @@ public class Main {
             System.out.println("Nenhum funcionário com aniversário em Outubro ou Dezembro.");
         }
 
+        System.out.println();
 
         for (Map.Entry<String, List<Employee>> entry : employeesByFunction.entrySet()) {
             System.out.println("Função: " + entry.getKey());
@@ -76,6 +79,21 @@ public class Main {
             }
             System.out.println();
         }
+
+        // Encontrando o funcionário com a maior idade
+        Employee oldestEmployee = employees.stream()
+                .max(Comparator.comparingInt(employee -> employee.getDateBirth().until(LocalDate.now()).getYears()))
+                .orElse(null);
+
+        // Imprimindo o funcionário com a maior idade, caso exista
+        if (oldestEmployee != null) {
+            int age = oldestEmployee.getDateBirth().until(LocalDate.now()).getYears();
+            System.out.println("Funcionário com a maior idade:");
+            System.out.println("Nome: " + oldestEmployee.getName() + " | Idade: " + age + " anos");
+        } else {
+            System.out.println("Não há funcionários cadastrados.");
+        }
+
 
         sc.close();
     }
