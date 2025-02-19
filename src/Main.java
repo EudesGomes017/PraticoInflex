@@ -128,6 +128,22 @@ public class Main {
         System.out.println("Total dos salários dos funcionários: R$ " + moneyFormatter.format(totalSalary));
 
 
+        System.out.println();
+
+        System.out.println("Imprimindo quantos salários mínimos cada funcionário ganha");
+
+        // Definindo o valor do salário mínimo
+        BigDecimal salarioMinimo = new BigDecimal("1212.00");
+
+        // Imprimindo quantos salários mínimos cada funcionário ganha
+        System.out.println("Quantidade de salários mínimos de cada funcionário:");
+
+        for (Employee employee : employees) {
+            BigDecimal salariosMinimos = employee.getSalary().divide(salarioMinimo, 2, BigDecimal.ROUND_HALF_UP);
+            System.out.println("Nome: " + employee.getName() + " | " +
+                    "Salários Mínimos: " + salariosMinimos);
+        }
+
 
         sc.close();
     }
