@@ -31,10 +31,10 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", dateBirth=" + dateBirth +
-                '}';
+        return "Person " +
+                "name = '" + name + '\'' +
+                ", dateBirth = " + dateBirth
+                ;
     }
 }
 
