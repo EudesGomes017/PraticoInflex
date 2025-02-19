@@ -99,7 +99,7 @@ for (Employee employee : employees) {
 📌 Como Executar o Projeto
 Clone o repositório
 
-git clone https://github.com/seu-usuario/meu-projeto.git
+git clone https://git@github.com:EudesGomes017/PraticoInflex.git
 
 Acesse o diretório
 cd meu-projeto
