@@ -10,10 +10,6 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
 
-
-        Locale.setDefault(Locale.US);
-        Scanner sc = new Scanner(System.in);
-
         List<Employee> employees = new ArrayList<>();
 
         employees.add(new Employee("Maria", LocalDate.of(2000, 10, 18), new BigDecimal("2009.44"), "Operador"));
@@ -114,11 +110,9 @@ public class Main {
             );
         }
 
-
         System.out.println();
 
         System.out.println("Imprimindo o total dos salários");
-
         // Calculando o total dos salários
         BigDecimal totalSalary = employees.stream()
                 .map(Employee::getSalary)
@@ -126,7 +120,6 @@ public class Main {
 
             // Imprimindo o total dos salários
         System.out.println("Total dos salários dos funcionários: R$ " + moneyFormatter.format(totalSalary));
-
 
         System.out.println();
 
@@ -144,7 +137,5 @@ public class Main {
                     "Salários Mínimos: " + salariosMinimos);
         }
 
-
-        sc.close();
     }
 }
