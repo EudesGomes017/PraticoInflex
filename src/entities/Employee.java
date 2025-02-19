@@ -31,6 +31,10 @@ public class Employee extends Person {
         this.function = function;
     }
 
+    public void applySalaryIncrease() {
+        this.salary = this.salary.multiply(new BigDecimal("1.10")); // Aumento de 10%
+    }
+
     @Override
     public String toString() {
         return super.toString() + ", Salário=" + salary + ", Cargo='" + function + "'";
