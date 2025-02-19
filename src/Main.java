@@ -115,6 +115,19 @@ public class Main {
         }
 
 
+        System.out.println();
+
+        System.out.println("Imprimindo o total dos salários");
+
+        // Calculando o total dos salários
+        BigDecimal totalSalary = employees.stream()
+                .map(Employee::getSalary)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+            // Imprimindo o total dos salários
+        System.out.println("Total dos salários dos funcionários: R$ " + moneyFormatter.format(totalSalary));
+
+
 
         sc.close();
     }
