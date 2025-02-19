@@ -40,6 +40,29 @@ public class Main {
         Map<String, List<Employee>> employeesByFunction = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getFunction));
 
+        // Filtrando os funcionários que fazem aniversário em Outubro (10) ou Dezembro (12)
+        List<Employee> employeesWithBirthdaysInOctDec = employees.stream()
+                .filter(employee -> {
+                    int month = employee.getDateBirth().getMonthValue();
+                    return month == 10 || month == 12;
+                })
+                .collect(Collectors.toList());
+
+        // Imprimindo os funcionários encontrados
+        if (!employeesWithBirthdaysInOctDec.isEmpty()) {
+            System.out.println("Funcionários com aniversário em Outubro ou Dezembro:");
+            for (Employee employee : employeesWithBirthdaysInOctDec) {
+                System.out.println(
+                        "Nome: " + employee.getName() + " | " +
+                                "Data de Nascimento: " + employee.getDateBirth().format(dateFormatter) + " | " +
+                                "Salário: R$ " + moneyFormatter.format(employee.getSalary()) + " | " +
+                                "Função: " + employee.getFunction()
+                );
+            }
+        } else {
+            System.out.println("Nenhum funcionário com aniversário em Outubro ou Dezembro.");
+        }
+
 
         for (Map.Entry<String, List<Employee>> entry : employeesByFunction.entrySet()) {
             System.out.println("Função: " + entry.getKey());
