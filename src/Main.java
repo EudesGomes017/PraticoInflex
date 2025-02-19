@@ -94,6 +94,27 @@ public class Main {
             System.out.println("Não há funcionários cadastrados.");
         }
 
+        System.out.println();
+
+        System.out.println("Imprimindo os funcionários ordenados");
+
+        // Ordenando os funcionários por nome em ordem alfabética
+        List<Employee> sortedEmployees = employees.stream()
+                .sorted(Comparator.comparing(Employee::getName))
+                .collect(Collectors.toList());
+
+        // Imprimindo os funcionários ordenados
+        System.out.println("Funcionários em ordem alfabética:");
+        for (Employee employee : sortedEmployees) {
+            System.out.println(
+                    "Nome: " + employee.getName() + " | " +
+                            "Data de Nascimento: " + employee.getDateBirth().format(dateFormatter) + " | " +
+                            "Salário: R$ " + moneyFormatter.format(employee.getSalary()) + " | " +
+                            "Função: " + employee.getFunction()
+            );
+        }
+
+
 
         sc.close();
     }
