@@ -38,7 +38,6 @@ public class Main {
         Map<String, List<Employee>> employeesByFunction = employees.stream()
                 .collect(Collectors.groupingBy(Employee::getFunction));
 
-        // Filtrando os funcionários que fazem aniversário em Outubro (10) ou Dezembro (12)
         List<Employee> employeesWithBirthdaysInOctDec = employees.stream()
                 .filter(employee -> {
                     int month = employee.getDateBirth().getMonthValue();
@@ -46,7 +45,7 @@ public class Main {
                 })
                 .collect(Collectors.toList());
 
-        // Imprimindo os funcionários encontrados
+        
         if (!employeesWithBirthdaysInOctDec.isEmpty()) {
             System.out.println("Funcionários com aniversário em Outubro ou Dezembro:");
             for (Employee employee : employeesWithBirthdaysInOctDec) {
@@ -76,12 +75,10 @@ public class Main {
             System.out.println();
         }
 
-        // Encontrando o funcionário com a maior idade
         Employee oldestEmployee = employees.stream()
                 .max(Comparator.comparingInt(employee -> employee.getDateBirth().until(LocalDate.now()).getYears()))
                 .orElse(null);
 
-        // Imprimindo o funcionário com a maior idade, caso exista
         if (oldestEmployee != null) {
             int age = oldestEmployee.getDateBirth().until(LocalDate.now()).getYears();
             System.out.println("Funcionário com a maior idade:");
@@ -94,12 +91,10 @@ public class Main {
 
         System.out.println("Imprimindo os funcionários ordenados");
 
-        // Ordenando os funcionários por nome em ordem alfabética
         List<Employee> sortedEmployees = employees.stream()
                 .sorted(Comparator.comparing(Employee::getName))
                 .collect(Collectors.toList());
 
-        // Imprimindo os funcionários ordenados
         System.out.println("Funcionários em ordem alfabética:");
         for (Employee employee : sortedEmployees) {
             System.out.println(
@@ -118,17 +113,14 @@ public class Main {
                 .map(Employee::getSalary)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-            // Imprimindo o total dos salários
         System.out.println("Total dos salários dos funcionários: R$ " + moneyFormatter.format(totalSalary));
 
         System.out.println();
 
         System.out.println("Imprimindo quantos salários mínimos cada funcionário ganha");
 
-        // Definindo o valor do salário mínimo
         BigDecimal salarioMinimo = new BigDecimal("1212.00");
 
-        // Imprimindo quantos salários mínimos cada funcionário ganha
         System.out.println("Quantidade de salários mínimos de cada funcionário:");
 
         for (Employee employee : employees) {
